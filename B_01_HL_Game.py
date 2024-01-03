@@ -1,4 +1,5 @@
 import math
+import random
 
 
 # checks users enter yes (y) or no (n)
@@ -109,13 +110,14 @@ if want_instructions == "yes":
 num_rounds = int_check("Rounds <enter for infinite>: ",
                        low=1, exit_code="")
 
-if num_rounds == "infinite":
+if num_rounds == "":
     mode = "infinite"
     num_rounds = 5
 
 # Get Game parameters
 low_num = int_check("Low Number? ")
 high_num = int_check("High Number? ", low=low_num + 1)
+
 guesses_allowed = calc_guesses(low_num, high_num)
 
 # Game loop starts here
@@ -128,8 +130,6 @@ while rounds_played < num_rounds:
         rounds_heading = f"\n💿💿💿 Round {rounds_played + 1} of {num_rounds} 💿💿💿"
 
     print(rounds_heading)
-    print()
-
     # get user choice
     user_choice = input("Choose: ")
 
